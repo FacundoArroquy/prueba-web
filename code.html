@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glacial Indifference | Panadería Gluten-Free</title>
+    <style>
+        :root {
+            --primary-color: #89b7ac;
+            --secondary-color: #5c8a7d;
+            --light-color: #ddeae7;
+            --dark-color: #2a3f3a;
+            --accent-color: #f0d6b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            max-width: 120px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        .logo-text {
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 5px;
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: white;
+            margin-top: 1rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-weight: 300;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 0.8rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            height: 60vh;
+            background-image: linear-gradient(rgba(137, 183, 172, 0.5), rgba(137, 183, 172, 0.3)), 
+                              url('https://placehold.co/1920x1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            padding: 0.8rem 2rem;
+            background-color: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin: 1rem auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 5px;
+            font-size: 1.8rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://placehold.co/120x120" alt="Logo Glacial Indifference - Panadería Gluten Free con diseño minimalista en tonalidades verde azulado" />
+        </div>
+        <h1 class="logo-text">Glacial Indifference</h1>
+        <p class="tagline">Panadería y pastelería libre de gluten</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero" id="inicio">
+        <h1>Descubre el placer sin gluten</h1>
+        <p>Elaboramos panes y pasteles artesanales con ingredientes naturales, cuidando cada detalle para ofrecerte productos deliciosos y seguros para tu salud.</p>
+        <a href="#productos" class="btn">Ver productos</a>
+    </section>
+    
+    <section id="productos">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/600x400" alt="Pan de hogaza artesanal gluten free con corteza dorada y miga esponjosa" />
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Pan Artesanal</h3>
+                    <p class="product-description">Elaborado con harinas alternativas de alta calidad, nuestro pan tiene una textura perfecta y sabor auténtico.</p>
+                    <p class="product-price">$7.500</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/600x400" alt="Tarta de chocolate gluten free con decoración minimalista y frutos rojos" />
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Tarta de Chocolate</h3>
+                    <p class="product-description">Delicioso pastel de chocolate con base de almendras, sin gluten pero con todo el sabor.</p>
+                    <p class="product-price">$12.900</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/600x400" alt="Galletas variadas gluten free con formas circulares y textura crujiente" />
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Galletas Variadas</h3>
+                    <p class="product-description">Selección de galletas crujientes con sabores clásicos, ideales para el desayuno o la merienda.</p>
+                    <p class="product-price">$5.900</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/600x400" alt="Croissants gluten free con capas doradas y perfectamente laminados" />
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Croissants</h3>
+                    <p class="product-description">Nuestra versión sin gluten de este clásico francés, perfectamente laminado y dorado.</p>
+                    <p class="product-price">$3.500 c/u</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="sobre-nosotros">
+        <h2 class="section-title">Sobre Nosotros</h2>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://placehold.co/800x600" alt="Interior de la panadería Glacial Indifference con mostrador de madera clara y productos exhibidos" />
+            </div>
+            <div class="about-text">
+                <p>En Glacial Indifference nacimos con la misión de crear productos de panadería y pastelería libres de gluten sin comprometer el sabor ni la calidad. Nuestro nombre refleja nuestra filosofía frente a las limitaciones: una actitud de indiferencia glacial hacia las barreras convencionales de la repostería sin gluten.</p>
+                <p>Todos nuestros productos están elaborados con materias primas cuidadosamente seleccionadas, evitando no solo el gluten sino también ingredientes artificiales y procesos industriales.</p>
+                <p>Nuestro equipo de panaderos combina técnicas tradicionales con innovación constante para ofrecerte experiencias gastronómicas únicas, donde la salud y el placer van de la mano.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacto">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Dirección</h3>
+                <p>Calle Panaderos 123, Local 45<br>Santiago Centro</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Teléfono</h3>
+                <p>+56 2 2345 6789</p>
+                <p>WhatsApp: +56 9 8765 4321</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>info@glacialindifference.cl</p>
+                <p>pedidos@glacialindifference.cl</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-clock"></i>
+                <h3>Horario</h3>
+                <p>Lunes a Viernes: 8:30 - 20:00<br>Sábado: 9:00 - 18:00<br>Domingo: Cerrado</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-logo">Glacial Indifference</div>
+        <p>Panadería y pastelería libre de gluten</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        
+        <p class="copyright">© 2023 Glacial Indifference. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple animation for product cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
